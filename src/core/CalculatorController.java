@@ -1,14 +1,18 @@
 package core;
 
+import java.text.DecimalFormat;
 import operation.Operation;
 
 public class CalculatorController {
+    private DecimalFormat df;
+
     private final CalculatorModel calculatorModel;
     private final CalculatorView calculatorView;
 
     private String currentDisplay = "0";
 
     public CalculatorController(CalculatorView calculatorView, CalculatorModel calculatorModel) {
+        df = new DecimalFormat("#.######");
         this.calculatorView = calculatorView;
         this.calculatorModel = calculatorModel;
     }
@@ -104,6 +108,6 @@ public class CalculatorController {
                 return "Overflow";
             }
         }
-        return String.valueOf(val);
+        return df.format(val);
     }
 }
