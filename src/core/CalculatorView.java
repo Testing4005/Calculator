@@ -5,6 +5,8 @@ import util.Util;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyAdapter;
 
 public class CalculatorView extends JFrame {
     private final ImageIcon icon;
@@ -77,6 +79,12 @@ public class CalculatorView extends JFrame {
         addButton(panel, gbc, 2, 4, 1, 1, Util.createButton(".", e -> calculatorController.handleNumber(".")));
 
         add(panel, BorderLayout.CENTER);
+
+        addKeyBinds();
+    }
+
+    public void setText(String text) {
+        label.setText(text);
     }
 
     private void addButton(JPanel panel, GridBagConstraints gbc, int x, int y, int w, int h, JButton button) {
@@ -91,7 +99,31 @@ public class CalculatorView extends JFrame {
         panel.add(button, gbc);
     }
 
-    public void setText(String text) {
-        label.setText(text);
+    private void addKeyBinds() {
+        setFocusable(true);
+        addKeyListener(new KeyAdapter() {
+            @Override public void keyPressed(KeyEvent e) {
+                char c = e.getKeyChar();
+                if(c >= '0' && c <= '9') {
+                    calculatorController.handleNumber(String.valueOf(c));
+                } else if(c == '.') {
+                    calculatorController.handleNumber(".");
+                } else if(c == '+') {
+                    calculatorController.handleOperation(add);
+                } else if(c == '-') {
+                    calculatorController.handleOperation(sub);
+                } else if(c == '*') {
+                    calculatorController.handleOperation(mul);
+                } else if(c == '/') {
+                    calculatorController.handleOperation(div);
+                } else if(c == '\n' || c == '=') {
+                    calculatorController.handleEquals();
+                } else if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                    calculatorController.handleBackspace();
+                } else if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    calculatorController.handleClear();
+                }
+            }
+        });
     }
 }
