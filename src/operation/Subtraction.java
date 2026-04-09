@@ -1,13 +1,8 @@
 package operation;
 
-public class Subtraction implements Calc {
+public class Subtraction implements Operation {
     @Override
     public double calculate(double a, double b) {
-        return return a - b;
-    }
-
-    @Override
-    public String getSymbol() {
-        return "-";
+        return a - b;
     }
 }

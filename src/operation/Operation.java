@@ -1,6 +1,5 @@
 package operation;
 
-public interface Calc {
+public interface Operation {
     double calculate(double a, double b);
-    String getSymbol();
 }

@@ -1,13 +1,8 @@
 package operation;
 
-public class Addition implements Calc {
+public class Addition implements Operation {
     @Override
     public double calculate(double a, double b) {
         return a + b;
-    }
-
-    @Override
-    public String getSymbol() {
-        return "+";
     }
 }
