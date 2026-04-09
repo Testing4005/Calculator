@@ -9,20 +9,20 @@ public class CalculatorModel {
     private boolean newInput = true;
 
     // Getters
-    public void setFirstOperand(double v) {
-        firstOperand  = v;
+    public void setFirstOperand(double firstOperand) {
+        this.firstOperand = firstOperand;
     }
 
-    public void setSecondOperand(double v) {
-        secondOperand = v;
+    public void setSecondOperand(double secondOperand) {
+        this.secondOperand = secondOperand;
     }
 
     public void setOperation(Operation operation) {
         this.operation = operation;
     }
 
-    public void setNewInput(boolean flag) {
-        newInput = flag;
+    public void setNewInput(boolean newInput) {
+        this.newInput = newInput;
     }
 
     // Setters
